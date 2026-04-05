@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>แบบฝึกหัดเศษส่วน ม.1 พร้อมเฉลย 10 ข้อ</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#16a34a;
+  --primary-light:#22c55e;
+  --primary-dark:#15803d;
+  --secondary:#bbf7d0;
+  --accent:#4ade80;
+  --light-bg:#f0fdf4;
+  --card-bg:#ffffff;
+  --text:#1a1a2e;
+  --muted:#64748b;
+  --correct-bg:#d1fae5;
+  --correct-border:#059669;
+  --wrong-bg:#fee2e2;
+  --wrong-border:#dc2626;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Sarabun',sans-serif;
+  background:var(--light-bg);
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(34,197,94,0.1) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(22,163,74,0.08) 0%, transparent 40%);
+  min-height:100vh;
+  color:var(--text);
+  padding:20px 16px 60px;
+}
+
+/* HERO */
+.hero{
+  max-width:700px;
+  margin:0 auto 28px;
+  text-align:center;
+  padding:32px 20px 24px;
+  background:linear-gradient(135deg,#15803d 0%,#16a34a 45%,#22c55e 100%);
+  border-radius:24px;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 8px 32px rgba(22,163,74,0.35);
+}
+.hero::before{
+  content:'';position:absolute;top:-30px;right:-30px;
+  width:130px;height:130px;
+  background:rgba(255,255,255,0.1);border-radius:50%;
+}
+.hero::after{
+  content:'';position:absolute;bottom:-20px;left:-20px;
+  width:90px;height:90px;
+  background:rgba(255,255,255,0.08);border-radius:50%;
+}
+.hero-icons{
+  font-size:38px;margin-bottom:10px;
+  animation:bounce 2s ease-in-out infinite;
+}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.hero h1{
+  font-family:'Nunito',sans-serif;
+  font-size:26px;font-weight:900;
+  color:#fff;
+  text-shadow:0 2px 8px rgba(0,0,0,0.15);
+  line-height:1.3;margin-bottom:8px;
+}
+.hero-sub{
+  font-size:15px;color:rgba(255,255,255,0.9);font-weight:600;
+  background:rgba(255,255,255,0.2);
+  display:inline-block;padding:4px 14px;border-radius:20px;margin-bottom:14px;
+}
+.hero-badges{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.badge{
+  background:rgba(255,255,255,0.9);color:var(--primary-dark);
+  font-weight:700;font-size:13px;padding:4px 12px;
+  border-radius:20px;display:flex;align-items:center;gap:4px;
+}
+
+/* NAV PILLS */
+.nav-pills{
+  max-width:700px;margin:0 auto 20px;
+  display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;
+}
+.nav-pills::-webkit-scrollbar{display:none}
+.pill{
+  flex-shrink:0;padding:7px 14px;border-radius:20px;
+  font-size:13px;font-weight:700;text-decoration:none;
+  transition:all 0.2s;border:2px solid transparent;
+  font-family:'Sarabun',sans-serif;cursor:pointer;white-space:nowrap;
+}
+.pill.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.pill.done{background:#d1fae5;color:#065f46;border-color:#059669}
+.pill.next{background:#fff;color:var(--muted);border-color:#e2e8f0}
+.pill.next:hover{border-color:var(--primary);color:var(--primary)}
+
+/* INTRO */
+.intro-box{
+  max-width:700px;margin:0 auto 20px;
+  background:linear-gradient(135deg,#f0fdf4,#dcfce7);
+  border:2px solid #86efac;border-radius:14px;
+  padding:14px 18px;font-size:14.5px;color:#14532d;
+  line-height:1.7;display:flex;gap:12px;align-items:flex-start;
+}
+.intro-icon{font-size:24px;flex-shrink:0;margin-top:2px}
+
+/* PROGRESS */
+.progress-wrap{max-width:700px;margin:0 auto 20px}
+.progress-bar-bg{background:#e2e8f0;border-radius:99px;height:8px;overflow:hidden}
+.progress-bar-fill{
+  height:100%;border-radius:99px;
+  background:linear-gradient(90deg,var(--primary),var(--primary-light));
+  transition:width 0.4s ease;width:0%;
+}
+.progress-label{
+  display:flex;justify-content:space-between;
+  font-size:12px;color:var(--muted);font-weight:600;margin-bottom:5px;
+}
+
+/* QUIZ */
+.quiz-wrap{max-width:700px;margin:0 auto}
+
+/* CARD */
+.q-card{
+  background:#fff;border:2px solid #f1f5f9;border-radius:20px;
+  padding:22px 20px;margin-bottom:14px;
+  box-shadow:0 2px 12px rgba(0,0,0,0.06);
+  transition:border-color 0.2s,box-shadow 0.2s;
+  position:relative;overflow:hidden;
+}
+.q-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--primary),var(--primary-light));
+  opacity:0;transition:opacity 0.3s;
+}
+.q-card.answered::before{opacity:1}
+.q-card.answered{border-color:#e2e8f0;box-shadow:0 4px 20px rgba(0,0,0,0.08)}
+
+.q-header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.q-num-badge{
+  background:linear-gradient(135deg,var(--primary-dark),var(--primary));
+  color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;
+  width:32px;height:32px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  box-shadow:0 2px 8px rgba(22,163,74,0.4);
+}
+.q-topic{
+  font-size:12px;color:var(--muted);font-weight:600;
+  background:#f8fafc;padding:3px 10px;border-radius:20px;letter-spacing:0.3px;
+}
+
+.q-text{
+  font-size:18px;font-weight:700;color:var(--text);
+  line-height:1.6;margin-bottom:16px;
+  padding:14px 16px;
+  background:linear-gradient(135deg,#f0fdf4,#f7fff9);
+  border-radius:12px;border:1.5px solid #bbf7d0;
+  font-family:'Nunito',sans-serif;
+}
+
+/* fraction display */
+.frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 2px;line-height:1.1}
+.frac .num{border-bottom:2px solid var(--primary-dark);padding:0 3px;font-size:0.85em;font-weight:800}
+.frac .den{padding:0 3px;font-size:0.85em;font-weight:800}
+
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:480px){.choices{grid-template-columns:1fr}}
+
+.choice-btn{
+  background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;
+  padding:11px 14px;font-size:15px;
+  font-family:'Sarabun',sans-serif;font-weight:600;color:#334155;
+  cursor:pointer;text-align:left;transition:all 0.15s ease;
+  line-height:1.5;width:100%;display:flex;align-items:center;gap:10px;
+}
+.choice-label{
+  width:24px;height:24px;border-radius:50%;
+  background:var(--primary);color:#fff;
+  font-size:12px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-family:'Nunito',sans-serif;
+}
+.choice-btn:hover:not(:disabled){
+  background:#f0fdf4;border-color:var(--primary);color:#14532d;
+  transform:translateY(-1px);box-shadow:0 4px 12px rgba(22,163,74,0.15);
+}
+.choice-btn:hover:not(:disabled) .choice-label{background:var(--primary-dark)}
+.choice-btn.correct{background:var(--correct-bg);border-color:var(--correct-border);color:#065f46}
+.choice-btn.correct .choice-label{background:var(--correct-border)}
+.choice-btn.wrong{background:var(--wrong-bg);border-color:var(--wrong-border);color:#7f1d1d}
+.choice-btn.wrong .choice-label{background:var(--wrong-border)}
+.choice-btn.show-correct{background:var(--correct-bg);border-color:var(--correct-border);color:#065f46}
+.choice-btn.show-correct .choice-label{background:var(--correct-border)}
+.choice-btn:disabled{cursor:default;transform:none!important;box-shadow:none!important}
+
+/* EXPLAIN */
+.explain{
+  display:none;margin-top:12px;padding:12px 16px;
+  background:linear-gradient(135deg,#fffbeb,#fef9c3);
+  border:1.5px solid #fbbf24;border-radius:12px;
+  font-size:14px;color:#78350f;line-height:1.8;
+  animation:slideIn 0.3s ease;
+}
+@keyframes slideIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.explain.show{display:block}
+.explain strong{color:#92400e}
+.exp-icon{font-size:18px;margin-right:6px}
+
+/* BOTTOM CTA */
+.bottom-cta{max-width:700px;margin:0 auto 20px;display:none;animation:fadeUp 0.5s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.bottom-cta.show{display:block}
+.cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:480px){.cta-grid{grid-template-columns:1fr}}
+.cta-card{
+  border-radius:16px;padding:18px 16px;text-decoration:none;
+  display:flex;flex-direction:column;gap:6px;
+  transition:transform 0.2s,box-shadow 0.2s;position:relative;overflow:hidden;
+}
+.cta-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.15)}
+.cta-card.green{background:linear-gradient(135deg,#15803d,#22c55e);color:#fff}
+.cta-card.teal{background:linear-gradient(135deg,#0f766e,#14b8a6);color:#fff}
+.cta-card-icon{font-size:28px;margin-bottom:2px}
+.cta-card-title{font-weight:800;font-size:16px;font-family:'Nunito',sans-serif}
+.cta-card-desc{font-size:13px;opacity:0.9;line-height:1.5}
+.cta-card-arrow{position:absolute;bottom:14px;right:14px;font-size:20px;opacity:0.6}
+
+/* SCORE */
+.score-area{
+  max-width:700px;margin:0 auto;
+  background:linear-gradient(135deg,#15803d 0%,#16a34a 50%,#22c55e 100%);
+  border-radius:24px;padding:32px 24px;text-align:center;color:#fff;
+  display:none;box-shadow:0 8px 32px rgba(22,163,74,0.4);
+  position:relative;overflow:hidden;
+}
+.score-area::before{
+  content:'🌿';font-size:90px;
+  position:absolute;top:-10px;right:-10px;opacity:0.12;
+}
+.score-star{font-size:40px;margin-bottom:8px;animation:pop 0.6s ease}
+@keyframes pop{from{transform:scale(0.3) rotate(-20deg)}to{transform:scale(1) rotate(0deg)}}
+.score-label{font-size:14px;opacity:0.85;font-weight:600;margin-bottom:4px}
+.score-num{
+  font-family:'Nunito',sans-serif;font-size:56px;font-weight:900;
+  margin:4px 0 6px;text-shadow:0 2px 12px rgba(0,0,0,0.15);
+}
+.score-pct{
+  font-size:16px;opacity:0.9;font-weight:700;
+  background:rgba(255,255,255,0.2);
+  display:inline-block;padding:4px 16px;border-radius:20px;margin-bottom:14px;
+}
+.score-msg{font-size:15px;opacity:0.95;margin-bottom:18px;font-weight:600}
+.dots{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
+.dot{width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,0.3)}
+.dot.c{background:#fff}
+.dot.w{background:#fca5a5}
+.restart-btn{
+  background:rgba(255,255,255,0.2);border:2.5px solid rgba(255,255,255,0.7);
+  border-radius:12px;padding:12px 32px;font-size:16px;
+  font-family:'Sarabun',sans-serif;font-weight:700;color:#fff;
+  cursor:pointer;transition:all 0.2s;margin-bottom:20px;
+}
+.restart-btn:hover{background:rgba(255,255,255,0.3);transform:translateY(-2px)}
+.score-links{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.score-link{
+  background:rgba(255,255,255,0.15);border-radius:12px;padding:12px 16px;
+  color:#fff;text-decoration:none;font-size:14px;font-weight:700;
+  display:flex;align-items:center;gap:10px;transition:background 0.2s;
+}
+.score-link:hover{background:rgba(255,255,255,0.25)}
+
+/* RELATED */
+.related-section{max-width:700px;margin:24px auto 0}
+.related-title{
+  font-size:16px;font-weight:800;color:var(--text);margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;font-family:'Nunito',sans-serif;
+}
+.related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(max-width:480px){.related-grid{grid-template-columns:1fr}}
+.related-card{
+  background:#fff;border:2px solid #f1f5f9;border-radius:14px;
+  padding:14px 16px;text-decoration:none;color:var(--text);
+  display:flex;align-items:center;gap:12px;transition:all 0.2s;
+}
+.related-card:hover{border-color:var(--primary);box-shadow:0 4px 16px rgba(22,163,74,0.15);transform:translateY(-2px)}
+.related-icon{
+  font-size:28px;width:48px;height:48px;background:#f0fdf4;
+  border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.related-name{font-weight:700;font-size:14px;color:var(--text)}
+.related-desc{font-size:12px;color:var(--muted);margin-top:2px}
+.related-status{
+  margin-left:auto;flex-shrink:0;font-size:11px;font-weight:700;
+  padding:3px 8px;border-radius:20px;
+}
+.status-done{background:#d1fae5;color:#065f46}
+.status-now{background:#dcfce7;color:#15803d;border:1.5px solid #86efac}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-icons">🍕➗🔢</div>
+  <h1>เศษส่วน<br>บวก ลบ คูณ หาร</h1>
+  <div class="hero-sub">คณิตศาสตร์ ม.1 · แบบฝึกหัดชุดที่ 3</div>
+  <div class="hero-badges">
+    <span class="badge">📝 10 ข้อ</span>
+    <span class="badge">✅ มีเฉลย</span>
+    <span class="badge">⚡ ทำได้ทันที</span>
+    <span class="badge">🆓 ฟรี 100%</span>
+  </div>
+</div>
+
+<!-- NAV PILLS -->
+<div class="nav-pills">
+  <a href="https://sorndee.co/blog/%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%9D%E0%B8%B6%E0%B8%81%E0%B8%AB%E0%B8%B1%E0%B8%94%E0%B8%AA%E0%B8%A1%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%8A%E0%B8%B4%E0%B8%87%E0%B9%80%E0%B8%AA%E0%B9%89%E0%B8%99-%E0%B8%A11" class="pill done">✅ สมการเชิงเส้น</a>
+  <a href="https://sorndee.co/blog/math-m1-integers-quiz" class="pill done">✅ จำนวนเต็ม</a>
+  <span class="pill active">📍 เศษส่วน</span>
+</div>
+
+<!-- INTRO -->
+<div class="intro-box">
+  <div class="intro-icon">💡</div>
+  <div>
+    <strong>ทบทวนก่อนทำ:</strong>
+    บวก/ลบเศษส่วน → ทำส่วนให้เท่ากันก่อน (ห.ร.ม.) ·
+    คูณเศษส่วน → คูณเศษกับเศษ หารกับหาร ·
+    หารเศษส่วน → คูณด้วยส่วนกลับ (กลับเศษเป็นส่วน)
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-wrap">
+  <div class="progress-label">
+    <span id="prog-text">ยังไม่ได้ตอบ</span>
+    <span id="prog-count">0 / 10</span>
+  </div>
+  <div class="progress-bar-bg">
+    <div class="progress-bar-fill" id="prog-bar"></div>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div class="quiz-wrap" id="quiz-container"></div>
+
+<!-- BOTTOM CTA (ข้อที่ 5) -->
+<div class="bottom-cta" id="bottom-cta">
+  <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:12px;font-family:'Nunito',sans-serif">
+    🌟 ทำได้ดีมาก! ยังไม่หมด ลองต่อเลย...
+  </div>
+  <div class="cta-grid">
+    <a href="https://sorndee.co/core-subjects/math" target="_blank" class="cta-card green">
+      <div class="cta-card-icon">👩‍🏫</div>
+      <div class="cta-card-title">หาติวเตอร์คณิต</div>
+      <div class="cta-card-desc">ติวเตอร์มืออาชีพ สอนทุกระดับ ทุกที่ทุกเวลา</div>
+      <div class="cta-card-arrow">→</div>
+    </a>
+    <a href="https://sorndee.co/blog/math-m1-integers-quiz" class="cta-card teal">
+      <div class="cta-card-icon">➕</div>
+      <div class="cta-card-title">ชุดก่อนหน้า</div>
+      <div class="cta-card-desc">แบบฝึกจำนวนเต็ม ม.1 พร้อมเฉลย</div>
+      <div class="cta-card-arrow">→</div>
+    </a>
+  </div>
+</div>
+
+<!-- SCORE -->
+<div class="score-area" id="score-area">
+  <div class="score-star" id="score-star">⭐</div>
+  <div class="score-label">คะแนนของคุณ</div>
+  <div class="score-num" id="score-num"></div>
+  <div class="score-pct" id="score-pct"></div>
+  <div class="score-msg" id="score-msg"></div>
+  <div class="dots" id="score-dots"></div>
+  <button class="restart-btn" onclick="restart()">🔄 ทำใหม่อีกครั้ง</button>
+  <div class="score-links">
+    <a href="https://sorndee.co/core-subjects/math" target="_blank" class="score-link">
+      <span>👩‍🏫</span>
+      <span>อยากเก่งขึ้น? หาติวเตอร์คณิตศาสตร์คุณภาพที่ sorndee.co</span>
+    </a>
+    <a href="https://sorndee.co/blog/math-m1-integers-quiz" target="_blank" class="score-link">
+      <span>➕</span>
+      <span>ลองทำชุดก่อนหน้า: การบวก ลบ คูณ หาร จำนวนเต็ม</span>
+    </a>
+    <a href="https://sorndee.co/blog/%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%9D%E0%B8%B6%E0%B8%81%E0%B8%AB%E0%B8%B1%E0%B8%94%E0%B8%AA%E0%B8%A1%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%8A%E0%B8%B4%E0%B8%87%E0%B9%80%E0%B8%AA%E0%B9%89%E0%B8%99-%E0%B8%A11" target="_blank" class="score-link">
+      <span>📐</span>
+      <span>ลองทำชุดแรก: สมการเชิงเส้นตัวแปรเดียว</span>
+    </a>
+  </div>
+</div>
+
+<!-- RELATED -->
+<div class="related-section">
+  <div class="related-title">📚 แบบฝึกหัดอื่นๆ ม.1</div>
+  <div class="related-grid">
+    <a href="https://sorndee.co/blog/%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%9D%E0%B8%B6%E0%B8%81%E0%B8%AB%E0%B8%B1%E0%B8%94%E0%B8%AA%E0%B8%A1%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%8A%E0%B8%B4%E0%B8%87%E0%B9%80%E0%B8%AA%E0%B9%89%E0%B8%99-%E0%B8%A11" class="related-card">
+      <div class="related-icon">📐</div>
+      <div class="related-info">
+        <div class="related-name">สมการเชิงเส้น</div>
+        <div class="related-desc">10 ข้อ พร้อมเฉลย</div>
+      </div>
+      <span class="related-status status-done">✅ ทำได้เลย</span>
+    </a>
+    <a href="https://sorndee.co/blog/math-m1-integers-quiz" class="related-card">
+      <div class="related-icon">➕</div>
+      <div class="related-info">
+        <div class="related-name">จำนวนเต็ม</div>
+        <div class="related-desc">10 ข้อ พร้อมเฉลย</div>
+      </div>
+      <span class="related-status status-done">✅ ทำได้เลย</span>
+    </a>
+    <div class="related-card" style="pointer-events:none;opacity:0.55">
+      <div class="related-icon">🍕</div>
+      <div class="related-info">
+        <div class="related-name">เศษส่วน</div>
+        <div class="related-desc">10 ข้อ พร้อมเฉลย</div>
+      </div>
+      <span class="related-status status-now">📍 กำลังอยู่</span>
+    </div>
+  </div>
+  <div style="margin-top:16px;text-align:center;font-size:13px;color:var(--muted)">
+    แบบฝึกหัดทั้งหมดโดย <a href="https://sorndee.co" target="_blank" style="color:var(--primary);font-weight:700;text-decoration:none">sorndee.co</a> — หาติวเตอร์คุณภาพ
+  </div>
+</div>
+
+<script>
+(function(){
+  var qs=[
+    {
+      q:"1/2 + 1/3 มีค่าเท่าไร?",
+      topic:"บวกเศษส่วน",
+      choices:["2/5","5/6","2/6","1/6"],
+      ans:1,
+      exp:"<span class='exp-icon'>💡</span><strong>วิธีทำ:</strong> ทำส่วนให้เท่ากัน ค.ร.น. ของ 2 และ 3 คือ 6<br>1/2 = 3/6 และ 1/3 = 2/6<br>3/6 + 2/6 = <strong>5/6</strong>"
+    },
+    {
+      q:"3/4 − 1/6 มีค่าเท่าไร?",
+      topic:"ลบเศษส่วน",
+      choices:["2/3","7/12","1/2","5/12"],
+      ans:1,
+      exp:"<span class='exp-icon'>💡</span><strong>วิธีทำ:</strong> ค.ร.น. ของ 4 และ 6 คือ 12<br>3/4 = 9/12 และ 1/6 = 2/12<br>9/12 − 2/12 = <strong>7/12</strong>"
+    },
+    {
+      q:"2/3 × 3/4 มีค่าเท่าไร?",
+      topic:"คูณเศษส่วน",
+      choices:["6/7","5/12","1/2","2/4"],
+      ans:2,
+      exp:"<span class='exp-icon'>💡</span><strong>วิธีทำ:</strong> คูณเศษกับเศษ หารกับหาร<br>(2×3)/(3×4) = 6/12 = <strong>1/2</strong>"
+    },
+    {
+      q:"5/6 ÷ 5/3 มีค่าเท่าไร?",
+      topic:"หารเศษส่วน",
+      choices:["25/18","1/2","2","5/9"],
+      ans:1,
+      exp:"<span class='exp-icon'>💡</span><strong>วิธีทำ:</strong> หารเศษส่วน = คูณด้วยส่วนกลับ<br>5/6 × 3/5 = 15/30 = <strong>1/2</strong>"
+    },
+    {
+      q:"แปลง 1⅔ เป็นเศษเกิน ได้เท่าไร?",
+      topic:"จำนวนคละ",
+      choices:["4/3","5/3","7/3","3/3"],
+      ans:1,
+      exp:"<span class='exp-icon'>💡</span><strong>วิธีทำ:</strong> (1 × 3) + 2 = 5 → เศษเกินคือ <strong>5/3</strong>"
+    },
+    {
+      q:"7/8 + 3/8 มีค่าเท่าไร? (ให้ตอบในรูปอย่างต่ำ)",
+      topic:"บวกเศษส่วนส่วนเท่ากัน",
+      choices:["10/8","5/4","10/16","1/4"],
+      ans:1,
+      exp:"<span class='exp-icon'>💡</span><strong>วิธีทำ:</strong> ส่วนเท่ากัน บวกเศษได้เลย<br>7/8 + 3/8 = 10/8 ทำให้อย่างต่ำ ÷2 = <strong>5/4</strong>"
+    },
+    {
+      q:"4/5 × 15 มีค่าเท่าไร?",
+      topic:"คูณเศษส่วนกับจำนวนเต็ม",
+      choices:["12","60/5","19","75/4"],
+      ans:0,
+      exp:"<span class='exp-icon'>💡</span><strong>วิธีทำ:</strong> 4/5 × 15 = (4 × 15)/5 = 60/5 = <strong>12</strong>"
+    },
+    {
+      q:"น้ำในขวดมี 3/4 ลิตร ดื่มไป 1/3 ลิตร เหลือเท่าไร?",
+      topic:"โจทย์ชีวิตประจำวัน",
+      choices:["5/12","2/7","1/2","7/12"],
+      ans:3,
+      exp:"<span class='exp-icon'>💡</span><strong>วิธีทำ:</strong> ค.ร.น. ของ 4 และ 3 คือ 12<br>3/4 = 9/12 และ 1/3 = 4/12<br>9/12 − 4/12 = <strong>7/12</strong> ลิตร"
+    },
+    {
+      q:"เรียงลำดับจากน้อยไปมาก: 1/2, 2/3, 3/8 ข้อใดถูก?",
+      topic:"เปรียบเทียบเศษส่วน",
+      choices:["1/2 < 2/3 < 3/8","3/8 < 1/2 < 2/3","2/3 < 1/2 < 3/8","3/8 < 2/3 < 1/2"],
+      ans:1,
+      exp:"<span class='exp-icon'>💡</span><strong>วิธีทำ:</strong> แปลงเป็นส่วน 24: 1/2=12/24, 2/3=16/24, 3/8=9/24<br>เรียง: 9 < 12 < 16 → <strong>3/8 < 1/2 < 2/3</strong>"
+    },
+    {
+      q:"(1/2 + 1/3) × 6 มีค่าเท่าไร?",
+      topic:"ลำดับการดำเนินการ",
+      choices:["3","4","5","6"],
+      ans:2,
+      exp:"<span class='exp-icon'>💡</span><strong>วิธีทำ:</strong> วงเล็บก่อน: 1/2 + 1/3 = 5/6<br>แล้วคูณ: 5/6 × 6 = <strong>5</strong>"
+    }
+  ];
+
+  var labels=['ก','ข','ค','ง'];
+  var answered=[];
+  for(var i=0;i<qs.length;i++) answered.push(null);
+
+  function render(){
+    var c=document.getElementById('quiz-container');
+    c.innerHTML='';
+    for(var i=0;i<qs.length;i++){
+      var q=qs[i];
+      var btns='';
+      for(var ci=0;ci<q.choices.length;ci++){
+        btns+='<button class="choice-btn" onclick="pick('+i+','+ci+')"><span class="choice-label">'+labels[ci]+'</span>'+q.choices[ci]+'</button>';
+      }
+      var card=document.createElement('div');
+      card.className='q-card';card.id='card-'+i;
+      card.innerHTML=
+        '<div class="q-header">'
+        +'<div class="q-num-badge">'+(i+1)+'</div>'
+        +'<div class="q-topic">'+q.topic+'</div>'
+        +'</div>'
+        +'<div class="q-text">'+q.q+'</div>'
+        +'<div class="choices" id="choices-'+i+'">'+btns+'</div>'
+        +'<div class="explain" id="exp-'+i+'">'+q.exp+'</div>';
+      c.appendChild(card);
+      if(answered[i]!==null) restoreQ(i);
+    }
+    updateProgress();
+  }
+
+  window.pick=function(qi,ci){
+    if(answered[qi]!==null) return;
+    answered[qi]=ci;
+    restoreQ(qi);
+    updateProgress();
+    checkCTA();
+  };
+
+  function restoreQ(qi){
+    var q=qs[qi];
+    var btns=document.querySelectorAll('#choices-'+qi+' .choice-btn');
+    var chosen=answered[qi];
+    document.getElementById('card-'+qi).classList.add('answered');
+    for(var ci=0;ci<btns.length;ci++){
+      btns[ci].disabled=true;
+      if(ci===q.ans) btns[ci].classList.add('show-correct');
+      if(ci===chosen && chosen!==q.ans) btns[ci].classList.add('wrong');
+      if(ci===chosen && chosen===q.ans){btns[ci].classList.remove('show-correct');btns[ci].classList.add('correct');}
+    }
+    document.getElementById('exp-'+qi).classList.add('show');
+  }
+
+  function updateProgress(){
+    var done=0,correct=0;
+    for(var i=0;i<answered.length;i++){
+      if(answered[i]!==null) done++;
+      if(answered[i]===qs[i].ans) correct++;
+    }
+    document.getElementById('prog-bar').style.width=Math.round(done/qs.length*100)+'%';
+    document.getElementById('prog-count').textContent=done+' / '+qs.length;
+    document.getElementById('prog-text').textContent=done===0?'ยังไม่ได้ตอบ':done<qs.length?'กำลังทำอยู่ 💪':'เสร็จแล้ว! 🎉';
+    if(done===qs.length) showScore(correct);
+  }
+
+  function checkCTA(){
+    var done=0;
+    for(var i=0;i<answered.length;i++) if(answered[i]!==null) done++;
+    if(done===5) document.getElementById('bottom-cta').classList.add('show');
+  }
+
+  function showScore(correct){
+    var sa=document.getElementById('score-area');
+    sa.style.display='block';
+    document.getElementById('score-num').textContent=correct+' / '+qs.length;
+    var pct=Math.round(correct/qs.length*100);
+    document.getElementById('score-pct').textContent=pct+'%';
+    var star='⭐',msg='';
+    if(pct>=90){star='🏆';msg='ยอดเยี่ยม! เศษส่วนไม่มีปัญหาแล้ว!';}
+    else if(pct>=70){star='🌟';msg='ดีมาก! ลองทบทวนข้อที่ผิดนิดหน่อยนะ';}
+    else if(pct>=50){star='💪';msg='ไม่เลว! อ่านคำอธิบายแล้วลองทำใหม่';}
+    else{star='😊';msg='ไม่ต้องท้อ! ดูคำอธิบายแต่ละข้อแล้วเริ่มใหม่ได้เลย';}
+    document.getElementById('score-star').textContent=star;
+    document.getElementById('score-msg').textContent=msg;
+    var dotsEl=document.getElementById('score-dots');
+    dotsEl.innerHTML='';
+    for(var i=0;i<answered.length;i++){
+      var d=document.createElement('div');
+      d.className='dot '+(answered[i]===qs[i].ans?'c':'w');
+      dotsEl.appendChild(d);
+    }
+    sa.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  window.restart=function(){
+    for(var i=0;i<answered.length;i++) answered[i]=null;
+    document.getElementById('score-area').style.display='none';
+    document.getElementById('bottom-cta').classList.remove('show');
+    render();
+    window.scrollTo({top:0,behavior:'smooth'});
+  };
+
+  render();
+})();
+</script>
+</body>
+</html>
